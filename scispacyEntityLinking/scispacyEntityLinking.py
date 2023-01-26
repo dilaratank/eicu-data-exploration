@@ -62,7 +62,10 @@ def perform_entity_linking(data, note_column, nlp, data_name):
         cuis = []
         linked_ent_names = []
 
-        note = nlp(sentence)
+        try:
+            note = nlp(sentence)
+        except:
+            continue
 
         # go over all entities found in a sentence, and link it against the UMLS knowledge base
         for entity in note.ents:
